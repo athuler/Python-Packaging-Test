@@ -4,7 +4,7 @@ with open("README.md", 'r') as f:
 	long_description = f.read()
 
 setup(
-	name='pythonPackagingTest',
+	name='Python Packaging Test',
 	version='0.1.2',
 	description='A test of the packaging',
 	long_description=long_description,
