@@ -1,2 +1,4 @@
+import pythonPackagingTest
 
-__all__ = ["sampleFunction"]
+__all__ = ["sampleModule"]
+

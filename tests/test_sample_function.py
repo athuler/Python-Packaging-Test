@@ -1,4 +1,4 @@
-import pythonPackagingTest
+from pythonPackagingTest.sampleModule import sampleFunction
 
 def test_sampleFunction():
-	assert pythonPackagingTest.sampleFunction(2) == 4
+	assert sampleFunction(2) == 4
