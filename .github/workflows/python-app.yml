@@ -37,3 +37,9 @@ jobs:
     - name: Test with pytest
       run: |
         pytest
+    - name: Automatic Release
+      uses: marvinpinto/action-automatic-releases@latest
+      with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: false
+            
