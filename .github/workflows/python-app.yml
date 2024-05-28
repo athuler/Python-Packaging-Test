@@ -37,9 +37,6 @@ jobs:
     - name: Test with pytest
       run: |
         pytest
-  release:
-      runs-on: ubuntu-latest
-      steps:
     - name: Automatic Release
       uses: marvinpinto/action-automatic-releases@latest
       with:
