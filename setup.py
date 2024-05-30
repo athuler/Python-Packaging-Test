@@ -5,7 +5,7 @@ with open("README.md", 'r') as f:
 
 setup(
 	name='Python Packaging Test',
-	version='0.1.3',
+	version='0.1.4',
 	description='A test of the packaging',
 	long_description=long_description,
 	author='Andrei Thuler',
