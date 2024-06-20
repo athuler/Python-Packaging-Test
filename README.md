@@ -11,7 +11,8 @@ Install the package with pip using:
 
 Run the packaged application using:
 ```python
->>> import pythonPackagingTest
+from pythonPackagingTest import run
+run()
 ```
 
 ## Updating
