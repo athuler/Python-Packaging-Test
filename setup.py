@@ -5,7 +5,7 @@ with open("README.md", 'r') as f:
 
 setup(
 	name='Python Packaging Test',
-	version='0.1.6',
+	version='0.1.6.1',
 	description='A test of the packaging',
 	long_description=long_description,
 	author='Andrei Thuler',
@@ -14,9 +14,5 @@ setup(
 	packages=find_packages(),
 	py_modules=find_packages(),
 	install_requires=["wheel"],
-	entry_points={
-		"console_scripts": [
-			""
-		]
-	}
-) #https://www.youtube.com/watch?v=n2d_7RPTKlk&t=11s
+	
+) #https://youtu.be/n2d_7RPTKlk?t=833
