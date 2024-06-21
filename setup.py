@@ -1,11 +1,12 @@
 from setuptools import setup, find_packages
+from pythonPackagingTest import __version__
 
 with open("README.md", 'r') as f:
 	long_description = f.read()
 
 setup(
 	name='Python Packaging Test',
-	version='0.1.6.2',
+	version=__version__,
 	description='A test of the packaging',
 	long_description=long_description,
 	author='Andrei Thuler',
@@ -13,6 +14,12 @@ setup(
 	url="https://github.com/athuler/Python-Packaging-Test",
 	packages=find_packages(),
 	py_modules=find_packages(),
-	install_requires=["wheel"],
+	install_requires=[
+		"wheel",
+		"time",
+		"threading",
+		"subprocess",
+		"sys",
+	],
 	
 ) #https://youtu.be/n2d_7RPTKlk?t=833
