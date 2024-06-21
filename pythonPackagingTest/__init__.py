@@ -5,7 +5,7 @@ import sys
 import time
 
 __all__ = ["sampleModule"]
-__version__ = "0.1.6.2"
+__version__ = "0.1.6.3"
 
 def run():
 	
@@ -46,7 +46,7 @@ def updater():
 	while shutDownEvent.is_set():
 		
 		# Update Package With pip
-		if installed_version not None:
+		if installed_version is not None:
 			subprocess.check_call([sys.executable, "-m", "pip", "install", "--upgrade", "git+https://github.com/athuler/Python-Packaging-Test.git@main"])
 		
 		# Get Running Vs Installed Versions
