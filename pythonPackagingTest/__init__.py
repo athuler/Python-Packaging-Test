@@ -5,7 +5,7 @@ import sys
 import time
 
 __all__ = ["sampleModule"]
-__version__ = "0.1.6.6"
+__version__ = "0.1.6.7"
 
 def run():
 	
@@ -50,11 +50,11 @@ def updater():
 			subprocess.check_call([sys.executable, "-m", "pip", "install", "--upgrade", "git+https://github.com/athuler/Python-Packaging-Test.git@main"])
 		
 		# Get Running Vs Installed Versions
-		reqs = subprocess.check_output([sys.executable, '-m', 'pip', 'freeze'])
+		reqs = subprocess.check_output([sys.executable, '-m', 'pip', 'show', 'Python-Packaging-Test'])
 		for pkg in reqs.split(b"\r\n"):
-			if("pythonPackagingTest" not in str(pkg)):
+			if("Version" not in str(pkg)):
 				continue
-			installed_version = pkg.split("==")[1]
+			installed_version = pkg.split(": ")[1]
 			break
 		print(f"Running version: {__version__}")
 		print(f"Installed Version: {installed_version}")
