@@ -3,3 +3,5 @@
 /tests/__pycache__
 /pythonPackagingTest.egg-info
 /pythonPackagingTest/__pycache__
+/.ipynb_checkpoints
+DebugNotebook.ipynb
