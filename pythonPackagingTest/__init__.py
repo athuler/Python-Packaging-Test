@@ -5,7 +5,7 @@ import sys
 import time
 
 __all__ = ["sampleModule"]
-__version__ = "0.1.6.7"
+__version__ = "0.1.6.8"
 
 def run():
 	
@@ -47,14 +47,14 @@ def updater():
 		
 		# Update Package With pip
 		if installed_version is not None:
-			subprocess.check_call([sys.executable, "-m", "pip", "install", "--upgrade", "git+https://github.com/athuler/Python-Packaging-Test.git@main"])
+			subprocess.run([sys.executable, "-m", "pip", "install", "--upgrade", "git+https://github.com/athuler/Python-Packaging-Test.git@main"], check=True)
 		
 		# Get Running Vs Installed Versions
-		reqs = subprocess.check_output([sys.executable, '-m', 'pip', 'show', 'Python-Packaging-Test'])
+		reqs = subprocess.run([sys.executable, '-m', 'pip', 'show', 'Python-Packaging-Test'], capture_output=True).stdout
 		for pkg in reqs.split(b"\r\n"):
 			if("Version" not in str(pkg)):
 				continue
-			installed_version = pkg.split(": ")[1]
+			installed_version = str(pkg).split(": ")[1]
 			break
 		print(f"Running version: {__version__}")
 		print(f"Installed Version: {installed_version}")
