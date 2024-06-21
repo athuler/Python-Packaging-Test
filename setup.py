@@ -16,8 +16,6 @@ setup(
 	py_modules=find_packages(),
 	install_requires=[
 		"wheel",
-		"subprocess",
-		"sys",
 	],
 	
 ) #https://youtu.be/n2d_7RPTKlk?t=833
