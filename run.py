@@ -18,5 +18,6 @@ while True:
 		reload(pythonPackagingTest)
 		print("Application updated & reloaded!")
 	else:
+		# Exit Application
 		print("Application shut down!")
 		break

@@ -5,7 +5,8 @@ import sys
 import time
 
 __all__ = ["sampleModule"]
-__version__ = "0.1.6.10.7"
+__version__ = "0.1.7"
+
 
 def run(quitOnUpdateAvailable = False):
 	exitCode = 0
@@ -39,7 +40,7 @@ def run(quitOnUpdateAvailable = False):
 	mainThread.join()
 	print("Shut down!")
 	return(exitCode)
-	
+
 
 def main():
 	while shutDownEvent.is_set():
@@ -58,6 +59,7 @@ def updater(quitOnUpdateAvailable = True):
 		# Update Package With pip
 		if installed_version is not None:
 			subprocess.run([sys.executable, "-m", "pip", "install", "--upgrade", "git+https://github.com/athuler/Python-Packaging-Test.git@main"], stdout = subprocess.DEVNULL,stderr = subprocess.DEVNULL)
+		
 		
 		# Get Running Vs Installed Versions
 		reqs = subprocess.run([sys.executable, '-m', 'pip', 'show', 'Python-Packaging-Test'], capture_output=True).stdout
