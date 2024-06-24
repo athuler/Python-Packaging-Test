@@ -5,7 +5,7 @@ import sys
 import time
 
 __all__ = ["sampleModule"]
-__version__ = "0.1.6.10.2"
+__version__ = "0.1.6.10.3"
 
 def run(quitOnUpdateAvailable = False):
 	
