@@ -21,8 +21,7 @@ run()
 
 Execute `run.py` which will automatically import and run the packaged application, while automatically keeping it up to date using `pip`.
 
-
-https://github.com/athuler/Python-Packaging-Test/blob/90958bab9fca27c25e161f9e885c85d6d9d70c8f/run.py
+https://github.com/athuler/Python-Packaging-Test/blob/90958bab9fca27c25e161f9e885c85d6d9d70c8f/run.py#L1-L23
 
 
 ## Updating
