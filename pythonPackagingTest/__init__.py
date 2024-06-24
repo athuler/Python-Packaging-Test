@@ -5,9 +5,10 @@ import sys
 import time
 
 __all__ = ["sampleModule"]
-__version__ = "0.1.6.10.5"
+__version__ = "0.1.6.10.6"
 
 def run(quitOnUpdateAvailable = False):
+	exitCode = 0
 	
 	# Set Up Shutdown Trigger
 	global shutDownEvent
@@ -23,21 +24,21 @@ def run(quitOnUpdateAvailable = False):
 	updaterThread.start()
 	mainThread.start()
 	
-	# Catch Keyboard Interrupt
 	
 	while shutDownEvent.is_set():
 		try:
 			time.sleep(.1)
 		except KeyboardInterrupt:
+			exitCode = 1
 			shutDownEvent.clear()
 			break
 	
 	# Shut Down Sequence
 	print("Shutting Down...")
-	shutDownEvent.clear()
 	updaterThread.join()
 	mainThread.join()
 	print("Shut down!")
+	return(exitCode)
 	
 
 def main():
