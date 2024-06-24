@@ -1,11 +1,11 @@
-from pythonPackagingTest.sampleModule import sampleFunction
+from pythonPackagingTest.sampleModule import sampleFunction, sampleNumber
 import threading
 import subprocess
 import sys
 import time
 
 __all__ = ["sampleModule"]
-__version__ = "0.1.6.10.3"
+__version__ = "0.1.6.10.4"
 
 def run(quitOnUpdateAvailable = False):
 	
@@ -34,6 +34,7 @@ def run(quitOnUpdateAvailable = False):
 	
 	# Shut Down Sequence
 	print("Shutting Down...")
+	shutDownEvent.clear()
 	updaterThread.join()
 	mainThread.join()
 	print("Shut down!")
@@ -41,14 +42,12 @@ def run(quitOnUpdateAvailable = False):
 
 def main():
 	while shutDownEvent.is_set():
-		try:
-			data = input("Please enter a number to double: ")
-		# Handle CTRL-C Input
-		except EOFError:
-			shutDownEvent.clear()
-			continue
+		data = sampleNumber()
+		
 		processed = sampleFunction(int(data))
-		print(f"Here's the doubled number: {processed}")
+		print(f"The double of {data} is {processed}")
+		
+		time.sleep(5)
 
 
 def updater(quitOnUpdateAvailable = True):
