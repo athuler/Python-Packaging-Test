@@ -10,6 +10,7 @@ while True:
 		quitOnUpdateAvailable = True # Quits When Update Available & Installed
 	)
 	
+	print(f"Received exit code {exitCode}")
 	
 	
 	if(exitCode == 0):
@@ -17,4 +18,5 @@ while True:
 		reload(pythonPackagingTest)
 		print("Application updated & reloaded!")
 	else:
+		print("Application shut down!")
 		break
