@@ -7,7 +7,7 @@ import time
 __all__ = ["sampleModule"]
 __version__ = "0.1.6.10.1"
 
-def run():
+def run(quitOnUpdateAvailable = False):
 	
 	# Set Up Shutdown Trigger
 	global shutDownEvent
@@ -15,7 +15,7 @@ def run():
 	shutDownEvent.set()
 	
 	# Prepare Threads
-	updaterThread = threading.Thread(target = updater, name="Updater")
+	updaterThread = threading.Thread(target = updater, name="Updater", args = (quitOnUpdateAvailable,))
 	mainThread = threading.Thread(target = main, name="Updater")
 	mainThread.daemon = True
 	
@@ -24,24 +24,34 @@ def run():
 	mainThread.start()
 	
 	# Catch Keyboard Interrupt
-	try:
-		while 1:
+	
+	while shutDownEvent.is_set():
+		try:
 			time.sleep(.1)
-	except KeyboardInterrupt:
-		print("Shutting Down...")
-		shutDownEvent.clear()
-		updaterThread.join()
-		mainThread.join()
-		print("Shut down!")
+		except KeyboardInterrupt:
+			shutDownEvent.clear()
+			break
+	
+	# Shut Down Sequence
+	print("Shutting Down...")
+	updaterThread.join()
+	mainThread.join()
+	print("Shut down!")
 	
 
 def main():
 	while shutDownEvent.is_set():
-		data = input("Please enter a number to double: ")
+		try:
+			data = input("Please enter a number to double: ")
+		# Handle CTRL-C Input
+		except EOFError:
+			shutDownEvent.clear()
+			continue
 		processed = sampleFunction(int(data))
 		print(f"Here's the doubled number: {processed}")
-	
-def updater():
+
+
+def updater(quitOnUpdateAvailable = True):
 	installed_version = None
 	while shutDownEvent.is_set():
 		
@@ -62,5 +72,9 @@ def updater():
 		# Determine Whether Update is Necessary
 		if(__version__ != installed_version and installed_version != None):
 			print("UPDATE AVAILABLE")
-		
-		time.sleep(5)
+			
+			if quitOnUpdateAvailable:
+				shutDownEvent.clear()
+		else:
+			# No update necessary
+			time.sleep(5)
