@@ -9,11 +9,20 @@ Install the package with pip using:
 
 ## Running
 
-Run the packaged application using:
+### Normal Operation
+
+Import and run the packaged application with the following:
 ```python
 from pythonPackagingTest import run
 run()
 ```
+
+### Auto-Updating
+
+Execute `run.py` which will automatically import and run the packaged application, while automatically keeping it up to date using `pip`.
+
+https://github.com/athuler/Python-Packaging-Test/blob/main/run.py
+
 
 ## Updating
 
